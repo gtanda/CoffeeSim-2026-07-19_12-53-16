@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7230879546799985926}
   - component: {fileID: 2328876717226297799}
   - component: {fileID: 2482049351218146641}
-  - component: {fileID: 6265863371043605238}
+  - component: {fileID: 4028812805006284784}
+  - component: {fileID: -2315561135202160993}
   m_Layer: 0
   m_Name: CoffeeCup
   m_TagString: Untagged
@@ -115,7 +116,34 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &6265863371043605238
+--- !u!54 &4028812805006284784
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282454047108312210}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-2315561135202160993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,6 +152,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3282454047108312210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be860cb2bec4812878f397dea94fa42, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bcdb9a1a42d0c94f8c4e6c7e3c32064, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interaction.TestInteractable
+  m_EditorClassIdentifier: Assembly-CSharp::CoffeeCup
