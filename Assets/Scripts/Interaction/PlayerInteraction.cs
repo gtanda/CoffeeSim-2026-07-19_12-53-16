@@ -56,16 +56,15 @@ namespace Interaction
 
         private bool TryGetInteractable(out IInteractable interactable)
         {
-            interactable = null;
-
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
             if (Physics.SphereCast(ray, 0.3f, out RaycastHit hit, interactDistance))
             {
-                interactable = hit.collider.GetComponent<IInteractable>();
+                interactable = hit.collider.GetComponentInParent<IInteractable>();
                 return interactable != null;
             }
 
+            interactable = null;
             return false;
         }
 
@@ -73,8 +72,20 @@ namespace Interaction
         {
             if (TryGetInteractable(out IInteractable interactable))
             {
-                interactionPrompt.SetActive(true);
-                promptText.text = interactable.GetInteractionText();
+                if (_heldObject != null && interactable is Counter)
+                {
+                    interactionPrompt.SetActive(true);
+                    promptText.text = "Press E to place";
+                }
+                else if (_heldObject == null)
+                {
+                    interactionPrompt.SetActive(true);
+                    promptText.text = interactable.GetInteractionText();
+                }
+                else
+                {
+                    interactionPrompt.SetActive(false);
+                }
             }
             else
             {
@@ -91,10 +102,12 @@ namespace Interaction
             // If we are holding something, try to place it
             if (_heldObject != null)
             {
-                if (interactable is IPlaceable placeable)
+                if (interactable is Counter counter)
                 {
-                    _heldObject.Place(placeable.GetPlacePoint());
-                    _heldObject = null;
+                    if (counter.TryPlaceObject(_heldObject))
+                    {
+                        _heldObject = null;
+                    }
                 }
 
                 return;

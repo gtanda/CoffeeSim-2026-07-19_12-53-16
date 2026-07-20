@@ -20,4 +20,18 @@ public class Counter : PlaceableSurface
         slot = null;
         return false;
     }
+    
+    public bool TryPlaceObject(IHoldable obj)
+    {
+        if (TryGetAvailableSlot(out PlaceableSlot slot))
+        {
+            obj.Place(slot.transform);
+
+            slot.Occupy(obj);
+
+            return true;
+        }
+
+        return false;
+    }
 }
