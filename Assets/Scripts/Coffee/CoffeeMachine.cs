@@ -13,7 +13,7 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
     [SerializeField] private float brewTime = 5f;
 
     [Header("Cup")] [SerializeField] private GameObject cupPrefab;
-    [SerializeField] private Transform cupSpawnPoint;
+    [SerializeField] private Counter counter;
 
     [Header("Visuals")] [SerializeField] private Renderer statusLight;
 
@@ -55,11 +55,16 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
 
     private void SpawnCup()
     {
-        Instantiate(
-            cupPrefab,
-            cupSpawnPoint.position,
-            cupSpawnPoint.rotation
-        );
+        if (counter.TryGetAvailableSlot(out PlaceableSlot slot))
+        {
+            CoffeeCup cup = Instantiate(cupPrefab, slot.transform.position, slot.transform.rotation)
+                .GetComponent<CoffeeCup>();
+            slot.Occupy(cup);
+        }
+        else
+        {
+            Debug.Log("No available counter space!");
+        }
     }
 
 

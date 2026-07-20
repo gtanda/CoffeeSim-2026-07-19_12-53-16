@@ -119,29 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &80961035 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1245062436116128808, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
-  m_PrefabInstance: {fileID: 5998161021563862323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &80961039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
   m_PrefabInstance: {fileID: 5998161021563862323}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &80961040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80961035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a60e04fe9c40ab8c1b6f91d2a53707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Coffee.Counter
-  placePoint: {fileID: 1090413424}
 --- !u!1001 &143848020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1245062436116128808, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_Name
-      value: Counter (1)
+      value: CoffeeCounter
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,8 +181,17 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 655955342}
-    m_AddedComponents: []
+      addedObject: {fileID: 1348436841}
+    - targetCorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1766678862}
+    - targetCorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1152006835}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1245062436116128808, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 616286272}
   m_SourcePrefab: {fileID: 100100000, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
 --- !u!1 &486649227
 GameObject:
@@ -277,42 +268,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486649227}
   m_CullTransparentMesh: 0
+--- !u!1 &616286267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1245062436116128808, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
+  m_PrefabInstance: {fileID: 143848020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &616286271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
   m_PrefabInstance: {fileID: 143848020}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &655955341
-GameObject:
+--- !u!114 &616286272
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 655955342}
-  m_Layer: 0
-  m_Name: CupSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &655955342
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655955341}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.083330154, y: 0.5, z: -0.37407202}
-  m_LocalScale: {x: 1, y: 1, z: 0.2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 616286271}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 616286267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a60e04fe9c40ab8c1b6f91d2a53707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Coffee.Counter
+  placePoint: {fileID: 1090413424}
+  slots:
+  - {fileID: 1348436840}
+  - {fileID: 1766678861}
+  - {fileID: 1152006834}
 --- !u!1 &832922432
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +722,7 @@ Transform:
   m_GameObject: {fileID: 1090413423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.576, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -776,6 +758,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1329214260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1152006833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152006835}
+  - component: {fileID: 1152006834}
+  m_Layer: 0
+  m_Name: Slot_03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1152006834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152006833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad12325dd21841e795dad3b4602c0201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction.PlaceableSlot
+--- !u!4 &1152006835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152006833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 616286271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167506668
 GameObject:
@@ -1042,6 +1068,50 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &1348436839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348436841}
+  - component: {fileID: 1348436840}
+  m_Layer: 0
+  m_Name: Slot_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1348436840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348436839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad12325dd21841e795dad3b4602c0201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction.PlaceableSlot
+--- !u!4 &1348436841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348436839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 616286271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629242938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1216,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1766678860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766678862}
+  - component: {fileID: 1766678861}
+  m_Layer: 0
+  m_Name: Slot_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1766678861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766678860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad12325dd21841e795dad3b4602c0201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction.PlaceableSlot
+--- !u!4 &1766678862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766678860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 616286271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1790844804 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5755113451491270345, guid: 85d57b7dd61aa2842a9a0a2623288d38, type: 3}
@@ -1287,6 +1401,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -908270129842638153, guid: 85d57b7dd61aa2842a9a0a2623288d38, type: 3}
+      propertyPath: counter
+      value: 
+      objectReference: {fileID: 616286272}
+    - target: {fileID: -908270129842638153, guid: 85d57b7dd61aa2842a9a0a2623288d38, type: 3}
       propertyPath: brewTime
       value: 5
       objectReference: {fileID: 0}
@@ -1297,7 +1415,7 @@ PrefabInstance:
     - target: {fileID: -908270129842638153, guid: 85d57b7dd61aa2842a9a0a2623288d38, type: 3}
       propertyPath: cupSpawnPoint
       value: 
-      objectReference: {fileID: 655955342}
+      objectReference: {fileID: 0}
     - target: {fileID: -908270129842638153, guid: 85d57b7dd61aa2842a9a0a2623288d38, type: 3}
       propertyPath: coffeeCupPrefab
       value: 
@@ -1365,7 +1483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.25
+      value: 6.249999
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1381,15 +1499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1409,10 +1527,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6709324511474196589, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1090413424}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1245062436116128808, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 80961040}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da654592e8318984bb7d714dcb4109ed, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
