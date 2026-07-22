@@ -12,6 +12,8 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
 
     [SerializeField] private float brewTime = 5f;
 
+    private Order currentOrder;
+
     [Header("Cup")] [SerializeField] private GameObject cupPrefab;
     [SerializeField] private Counter counter;
 
@@ -40,6 +42,17 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
         }
     }
 
+    public void BrewOrder(Order order)
+    {
+        if (currentState == MachineState.Brewing)
+        {
+            Debug.Log("machine is already brewing");
+            return;
+        }
+        currentOrder = order; 
+        StartCoroutine(BrewCoffee());
+    }
+
 
     private IEnumerator BrewCoffee()
     {
@@ -47,24 +60,28 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
 
         yield return new WaitForSeconds(brewTime);
 
-        SpawnCup();
-
+        CoffeeCup cup = SpawnCup();
+        if (cup != null && currentOrder != null)
+        {
+            currentOrder.AssignCoffeeCup(cup);
+        }
+        currentOrder = null;
         ChangeState(MachineState.Idle);
     }
 
 
-    private void SpawnCup()
+    private CoffeeCup SpawnCup()
     {
         if (counter.TryGetAvailableSlot(out PlaceableSlot slot))
         {
             CoffeeCup cup = Instantiate(cupPrefab, slot.transform.position, slot.transform.rotation)
                 .GetComponent<CoffeeCup>();
             slot.Occupy(cup);
+            return cup;
         }
-        else
-        {
-            Debug.Log("No available counter space!");
-        }
+
+        Debug.Log("No available counter space!");
+        return null;
     }
 
 

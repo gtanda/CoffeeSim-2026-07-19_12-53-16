@@ -1,22 +1,41 @@
+using System.Collections;
 using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject customerPrefab;
+    [Header("Customer Spawn Settings")] [SerializeField]
+    private GameObject customerPrefab;
+
+    [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform destinationPoint;
+
+    [SerializeField] private QueueManager queueManager;
+
+    public int maxCustomers = 5;
+    private int currentCustomers; 
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnCustomer();
+            StartCoroutine(SpawnCustomerRoutine());
     }
 
-    public void SpawnCustomer()
+    private IEnumerator SpawnCustomerRoutine()
     {
-        GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+        WaitForSeconds wait = new WaitForSeconds(spawnInterval);
 
-        Customer customer = customerObject.GetComponent<Customer>();
-        customer.MoveTo(destinationPoint.position);
+        while (currentCustomers < maxCustomers)
+        {
+            currentCustomers++;
+            GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+            Customer customer = customerObject.GetComponent<Customer>();
+            if (!queueManager.TryAssignCustomer(customer))
+            {
+                Destroy(customerObject);
+            }
+            
+            yield return wait;
+        }
     }
 }
