@@ -5,8 +5,10 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private QueueManager queueManager;
     [SerializeField] private Transform orderPoint;
     [SerializeField] private CoffeeMachine coffeeMachine;
+    [SerializeField] private Transform coffeePickupPoint;
     private Customer currentCustomer;
     private Order currentOrder;
+    
 
     // Update is called once per frame
     void Update()
@@ -27,11 +29,14 @@ public class OrderManager : MonoBehaviour
     private void CreateOrder(Customer customer)
     {
         currentOrder = new Order(customer);
-        Debug.Log(
-            "Created order for " + customer.name +
-            " Status: " + currentOrder.Status
-        );
+        customer.AssignOrder(currentOrder);
+        currentOrder.OnOrderReady += HandleOrderReady;
         
         coffeeMachine.BrewOrder(currentOrder);
+    }
+    
+    private void HandleOrderReady(Order order)
+    {
+        order.Customer.GoToCoffeePickup(coffeePickupPoint);
     }
 }

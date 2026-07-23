@@ -45,7 +45,7 @@ public class QueueManager : MonoBehaviour
             if (slot.IsAvailable())
             {
                 slot.AssignCustomer(customer);
-                customer.MoveTo(slot.transform.position);
+                customer.MoveTo(slot.transform.position, Customer.CustomerState.WalkingToQueue);
                 return true;
             }
         }
@@ -101,7 +101,7 @@ public class QueueManager : MonoBehaviour
                 if (customer != null)
                 {
                     currentSlot.AssignCustomer(customer);
-                    customer.MoveTo(currentSlot.transform.position);
+                    customer.MoveTo(currentSlot.transform.position, Customer.CustomerState.WalkingToQueue);
                 }
             }
         }

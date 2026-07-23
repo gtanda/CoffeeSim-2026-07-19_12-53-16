@@ -1,4 +1,3 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Order : MonoBehaviour
@@ -12,8 +11,9 @@ public class Order : MonoBehaviour
     }
     
     public Customer Customer { get; private set; }
-    public CoffeeCup Coffee { get; private set; }
+    public CoffeeCup AssignedCup { get; private set; }
     public OrderStatus Status { get; private set; }
+    public System.Action<Order> OnOrderReady;
 
     public Order(Customer customer)
     {
@@ -26,9 +26,11 @@ public class Order : MonoBehaviour
         Debug.Log("Order changed to " + Status);
     }
 
-    public void AssignCoffeeCup(CoffeeCup coffee)
+    public void AssignCoffeeCup(CoffeeCup cup)
     {
-        Coffee = coffee;
+        AssignedCup = cup;
         Status = OrderStatus.Ready;
+
+        OnOrderReady?.Invoke(this);
     }
 }

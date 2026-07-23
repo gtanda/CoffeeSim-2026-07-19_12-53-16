@@ -10,10 +10,12 @@ public class Customer : MonoBehaviour
         WalkingToOrderPoint,
         AtOrderPoint,
         WaitingForCoffee,
+        WalkingToCoffeePickup,
         Leaving
     }
 
     private CustomerState currentState;
+    private Order currentOrder;
 
     private NavMeshAgent navMeshAgent;
 
@@ -31,14 +33,14 @@ public class Customer : MonoBehaviour
         Debug.Log("Customer state: " + CurrentState);
         if (currentState == CustomerState.WalkingToQueue)
         {
-            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            if (HasReachedDestination())
             {
                 currentState = CustomerState.Waiting;
             }
         }
         else if (currentState == CustomerState.WalkingToOrderPoint)
         {
-            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            if (HasReachedDestination())
             {
                 currentState = CustomerState.AtOrderPoint;
                 ReachedOrderPoint?.Invoke(this);
@@ -46,28 +48,54 @@ public class Customer : MonoBehaviour
         }
         else if (currentState == CustomerState.Leaving)
         {
-            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            if (HasReachedDestination())
             {
                 Destroy(gameObject);
             }
         }
+        else if (currentState == CustomerState.WalkingToCoffeePickup)
+        {
+            if (HasReachedDestination())
+            {
+                Debug.Log("Reached pickup!");
+
+                Debug.Log(currentOrder.AssignedCup);
+
+                currentState = CustomerState.WaitingForCoffee;
+            }
+        }
     }
 
-    public void MoveTo(Vector3 destination)
+    public bool HasReachedDestination()
     {
+        return !navMeshAgent.pathPending &&
+               navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
+    }
+
+
+    public void AssignOrder(Order order)
+    {
+        currentOrder = order;
+    }
+
+    public void MoveTo(Vector3 destination, CustomerState newState)
+    {
+        currentState = newState;
         navMeshAgent.SetDestination(destination);
-        currentState = CustomerState.WalkingToQueue;
     }
 
     public void GoToOrderPoint(Transform orderPoint)
     {
-        currentState = CustomerState.WalkingToOrderPoint;
-        navMeshAgent.SetDestination(orderPoint.position);
+        MoveTo(orderPoint.position, CustomerState.WalkingToOrderPoint);
+    }
+
+    public void GoToCoffeePickup(Transform pickupPoint)
+    {
+        MoveTo(pickupPoint.position, CustomerState.WalkingToCoffeePickup);
     }
 
     public void Leave(Vector3 exitPosition)
     {
-        currentState = CustomerState.Leaving;
-        navMeshAgent.SetDestination(exitPosition);
+        MoveTo(exitPosition, CustomerState.Leaving);
     }
 }
