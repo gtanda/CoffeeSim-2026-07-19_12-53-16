@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Order : MonoBehaviour
+public class Order 
 {
     public enum OrderStatus
     {
@@ -20,6 +20,11 @@ public class Order : MonoBehaviour
         Customer = customer;
     }
 
+    public void Complete()
+    {
+        Status = OrderStatus.Completed;
+    }
+    
     public void ChangeStatus(OrderStatus newStatus)
     {
         Status = newStatus;

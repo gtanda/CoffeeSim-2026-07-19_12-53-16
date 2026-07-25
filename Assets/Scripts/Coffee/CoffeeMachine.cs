@@ -88,7 +88,7 @@ public class CoffeeMachine : MonoBehaviour, IInteractable
     private void ChangeState(MachineState newState)
     {
         currentState = newState;
-
+        
         switch (currentState)
         {
             case MachineState.Idle:

@@ -8,21 +8,21 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private Transform coffeePickupPoint;
     private Customer currentCustomer;
     private Order currentOrder;
-    
+
 
     // Update is called once per frame
     void Update()
     {
         if (currentCustomer != null) return;
-        
+
         Customer customer = queueManager.GetFirstCustomer();
 
         if (customer != null && customer.CurrentState == Customer.CustomerState.Waiting)
         {
             currentCustomer = customer;
             queueManager.RemoveCustomerFromQueue(customer);
-            customer.GoToOrderPoint(orderPoint);
             customer.ReachedOrderPoint += CreateOrder;
+            customer.GoToOrderPoint(orderPoint);
         }
     }
 
@@ -30,13 +30,8 @@ public class OrderManager : MonoBehaviour
     {
         currentOrder = new Order(customer);
         customer.AssignOrder(currentOrder);
-        currentOrder.OnOrderReady += HandleOrderReady;
-        
+        customer.StartWaitingForCoffee();
+
         coffeeMachine.BrewOrder(currentOrder);
-    }
-    
-    private void HandleOrderReady(Order order)
-    {
-        order.Customer.GoToCoffeePickup(coffeePickupPoint);
     }
 }

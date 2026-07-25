@@ -8,6 +8,7 @@ public class CustomerSpawner : MonoBehaviour
 
     [SerializeField] private float spawnInterval = 1f;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] Transform coffeePickupPoint;
 
     [SerializeField] private QueueManager queueManager;
 
@@ -30,6 +31,7 @@ public class CustomerSpawner : MonoBehaviour
             currentCustomers++;
             GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
             Customer customer = customerObject.GetComponent<Customer>();
+            customer.SetCoffeePickupPoint(coffeePickupPoint);
             if (!queueManager.TryAssignCustomer(customer))
             {
                 Destroy(customerObject);

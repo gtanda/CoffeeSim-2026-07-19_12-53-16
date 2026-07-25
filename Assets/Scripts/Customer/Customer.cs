@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour
 
     private CustomerState currentState;
     private Order currentOrder;
+    private Transform coffeePickupPoint;
 
     private NavMeshAgent navMeshAgent;
 
@@ -35,14 +36,14 @@ public class Customer : MonoBehaviour
         {
             if (HasReachedDestination())
             {
-                currentState = CustomerState.Waiting;
+                ChangeState(CustomerState.Waiting);
             }
         }
         else if (currentState == CustomerState.WalkingToOrderPoint)
         {
             if (HasReachedDestination())
             {
-                currentState = CustomerState.AtOrderPoint;
+                ChangeState(CustomerState.AtOrderPoint);
                 ReachedOrderPoint?.Invoke(this);
             }
         }
@@ -60,10 +61,20 @@ public class Customer : MonoBehaviour
                 Debug.Log("Reached pickup!");
 
                 Debug.Log(currentOrder.AssignedCup);
-
-                currentState = CustomerState.WaitingForCoffee;
+                ChangeState(CustomerState.Leaving);
             }
         }
+    }
+
+    public void SetCoffeePickupPoint(Transform pickupPoint)
+    {
+        coffeePickupPoint = pickupPoint;
+    }
+
+    private void ChangeState(CustomerState newState)
+    {
+        Debug.Log($"{name}: {currentState} -> {newState}");
+        currentState = newState;
     }
 
     public bool HasReachedDestination()
@@ -72,10 +83,15 @@ public class Customer : MonoBehaviour
                navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance;
     }
 
+    public void StartWaitingForCoffee()
+    {
+        ChangeState(CustomerState.WaitingForCoffee);
+    }
 
     public void AssignOrder(Order order)
     {
         currentOrder = order;
+        currentOrder.OnOrderReady += HandleOrderReady;
     }
 
     public void MoveTo(Vector3 destination, CustomerState newState)
@@ -94,8 +110,21 @@ public class Customer : MonoBehaviour
         MoveTo(pickupPoint.position, CustomerState.WalkingToCoffeePickup);
     }
 
+    private void HandleOrderReady(Order order)
+    {
+        GoToCoffeePickup(coffeePickupPoint);
+    }
+
     public void Leave(Vector3 exitPosition)
     {
         MoveTo(exitPosition, CustomerState.Leaving);
+    }
+    
+    private void OnDestroy()
+    {
+        if (currentOrder != null)
+        {
+            currentOrder.OnOrderReady -= HandleOrderReady;
+        }
     }
 }

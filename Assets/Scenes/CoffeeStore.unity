@@ -780,12 +780,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584304991}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.76199, y: 0, z: -0.21377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 769624435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &740810825
 PrefabInstance:
@@ -893,6 +893,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e4302b86765a0468484579677e75ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QueueSlot
+--- !u!1 &769624434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769624435}
+  m_Layer: 0
+  m_Name: GamePositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769624435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769624434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 584304992}
+  - {fileID: 1714036305}
+  - {fileID: 1817817452}
+  - {fileID: 1532426273}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &800626261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1716,6 +1751,7 @@ MonoBehaviour:
   customerPrefab: {fileID: 3860065235591094135, guid: 21689914577ff0e4f8ca9def4f011a8c, type: 3}
   spawnInterval: 3
   spawnPoint: {fileID: 1532426273}
+  coffeePickupPoint: {fileID: 1817817452}
   queueManager: {fileID: 1851836408}
   maxCustomers: 5
 --- !u!1 &1140743187
@@ -2878,12 +2914,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532426272}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.25, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 769624435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1576618842
 PrefabInstance:
@@ -3155,7 +3191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrderManager
   queueManager: {fileID: 1851836408}
   orderPoint: {fileID: 584304992}
-  coffeeMachine: {fileID: 0}
+  coffeeMachine: {fileID: 1463922471}
   coffeePickupPoint: {fileID: 0}
 --- !u!1 &1714036304
 GameObject:
@@ -3181,12 +3217,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714036304}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: -0, z: -13.75}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.27, y: 0, z: -13.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 769624435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741535421
 GameObject:
@@ -3400,6 +3436,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4979731970687230551, guid: 74fc70937b8037b43b69e846b025a542, type: 3}
   m_PrefabInstance: {fileID: 1807207791}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1817817451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817817452}
+  m_Layer: 0
+  m_Name: PickUpPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817817452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817817451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 769624435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1849293976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4034,12 +4101,10 @@ SceneRoots:
   - {fileID: 1629242942}
   - {fileID: 1938901509}
   - {fileID: 67508343}
-  - {fileID: 1532426273}
   - {fileID: 1851836407}
   - {fileID: 1125803264}
-  - {fileID: 1714036305}
   - {fileID: 1666907512}
-  - {fileID: 584304992}
   - {fileID: 1576618842}
   - {fileID: 1463922468}
+  - {fileID: 769624435}
   - {fileID: 1147014199}
